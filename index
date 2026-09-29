@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jorbys 2027 · Hablando español</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalto:#1b3fa6;
+  --cobalto-2:#2c56cf;
+  --gema:#f2c230;
+  --pimenton:#d7263d;
+  --oliva:#2f3a1f;
+  --cal:#ffffff;
+  --papel:#f6f8fc;
+  --tinta:#141b33;
+  --tinta-2:#4a5372;
+  --linha:#d7ddee;
+  --bg:var(--papel);
+  --card:var(--cal);
+  --display:"Shrikhand", "Georgia", serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1430; --card:#172049; --tinta:#eef1fb; --tinta-2:#aab3d4; --linha:#2a3670;
+    --cobalto:#6f8ff0; --cobalto-2:#8aa4f5; --papel:#0e1430;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1430; --card:#172049; --tinta:#eef1fb; --tinta-2:#aab3d4; --linha:#2a3670;
+  --cobalto:#6f8ff0; --cobalto-2:#8aa4f5; --papel:#0e1430;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--tinta);font-family:var(--body);font-size:17px;line-height:1.55}
+img{max-width:100%}
+a{color:var(--cobalto)}
+:focus-visible{outline:3px solid var(--gema);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* HERO: cartaz de feria */
+.hero{
+  position:relative;overflow:hidden;color:#fff;
+  background:#1b3fa6;
+  padding:56px 0 64px;
+}
+.hero::before{ /* azulejo */
+  content:"";position:absolute;inset:0;opacity:.16;
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 38%, #fff 39%, #fff 42%, transparent 43%),
+    conic-gradient(from 45deg, #fff 0 25%, transparent 0 50%, #fff 0 75%, transparent 0);
+  background-size:72px 72px, 72px 72px;
+  mask-image:linear-gradient(to bottom, #000 30%, transparent 100%);
+}
+.hero .wrap{position:relative}
+.hero-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-weight:600}
+.selo{background:var(--gema);color:#1b1b1b;border-radius:999px;padding:6px 14px;font-size:15px}
+h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(64px, 15vw, 176px);line-height:.88;margin:28px 0 10px;
+  letter-spacing:-.01em;transform:rotate(-3deg);transform-origin:left;
+  text-shadow:6px 6px 0 var(--pimenton);
+}
+.sub{font-family:var(--display);font-size:clamp(26px,5vw,44px);color:var(--gema);margin:18px 0 0;transform:rotate(-3deg);transform-origin:left}
+.billete{
+  margin-top:40px;display:inline-grid;grid-template-columns:auto auto auto;align-items:center;gap:18px;
+  background:#fff;color:#141b33;border-radius:14px;padding:16px 22px;
+  box-shadow:0 0 0 3px var(--gema);
+}
+.billete .d{font-family:var(--display);font-size:44px;line-height:1;color:var(--pimenton)}
+.billete small{display:block;font-size:13px;color:#4a5372;font-weight:600}
+.billete .seta{font-size:26px;color:#1b3fa6}
+.hero p.intro{max-width:560px;font-size:18px;margin:28px 0 0;color:#e3e9ff}
+
+/* seções */
+section{padding:64px 0}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,6vw,54px);line-height:1;margin:0 0 12px;color:var(--cobalto)}
+.lead{color:var(--tinta-2);max-width:620px;margin:0 0 32px}
+
+/* escolha */
+.opcoes{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media (max-width:760px){.opcoes{grid-template-columns:1fr}}
+.opcao{
+  background:var(--card);border:2px solid var(--linha);border-radius:22px;padding:26px;
+  display:flex;flex-direction:column;gap:16px;position:relative;
+}
+.opcao .num{
+  position:absolute;top:-22px;right:22px;width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;font-family:var(--display);font-size:28px;color:#fff;
+}
+.opcao.r1 .num{background:var(--cobalto-2)}
+.opcao.r2 .num{background:var(--pimenton)}
+.opcao h3{font-size:26px;margin:0;line-height:1.15}
+.opcao p{margin:0;color:var(--tinta-2)}
+.rota{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.rota li{font-size:14px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--bg);border:1px solid var(--linha)}
+.fatos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0}
+.fatos div{border-top:2px solid var(--linha);padding-top:8px}
+.fatos dt{font-size:13px;color:var(--tinta-2)}
+.fatos dd{margin:0;font-weight:700}
+.btn{
+  font:inherit;font-weight:700;cursor:pointer;border:0;border-radius:12px;padding:13px 18px;
+  background:var(--tinta);color:var(--bg);
+}
+.btn.ghost{background:transparent;color:var(--tinta);border:2px solid var(--tinta)}
+
+/* abas */
+.tabs{display:inline-flex;gap:6px;background:var(--card);border:2px solid var(--linha);border-radius:14px;padding:5px;margin-bottom:28px;flex-wrap:wrap}
+.tab{font:inherit;font-weight:700;border:0;background:transparent;color:var(--tinta-2);padding:10px 16px;border-radius:10px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--cobalto);color:#fff}
+
+/* timeline */
+.dias{list-style:none;margin:0;padding:0;position:relative}
+.dias::before{content:"";position:absolute;left:35px;top:10px;bottom:10px;width:3px;background:var(--linha)}
+.dia{display:grid;grid-template-columns:72px 1fr;gap:18px;padding:0 0 26px;position:relative}
+.data{
+  width:72px;height:72px;border-radius:50%;background:var(--card);border:3px solid var(--cobalto);
+  display:grid;place-items:center;text-align:center;line-height:1;z-index:1;
+}
+.data b{font-family:var(--display);font-weight:400;font-size:30px;color:var(--cobalto)}
+.data span{display:block;font-size:11px;color:var(--tinta-2);font-weight:600;margin-top:3px}
+.dia-corpo{background:var(--card);border:1px solid var(--linha);border-radius:16px;padding:18px 20px}
+.dia-corpo h4{margin:0 0 4px;font-size:20px;line-height:1.25}
+.onde{font-size:14px;font-weight:600;color:var(--pimenton);margin:0 0 8px}
+.dia-corpo p{margin:0 0 10px}
+.frase{
+  display:flex;gap:10px;align-items:flex-start;background:var(--gema);color:#1b1b1b;
+  border-radius:12px;padding:10px 14px;margin-top:12px;font-size:15px;
+}
+.frase strong{font-weight:700}
+.frase .bal{font-size:18px;line-height:1.2}
+.dica{font-size:14px;color:var(--tinta-2);margin:8px 0 0}
+
+/* comparação */
+.tabela-wrap{overflow-x:auto;border:2px solid var(--linha);border-radius:18px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--linha);vertical-align:top}
+tr:last-child td{border-bottom:0}
+thead th{font-size:15px}
+thead th:nth-child(2){color:var(--cobalto)}
+thead th:nth-child(3){color:var(--pimenton)}
+tbody th{font-weight:600;color:var(--tinta-2);font-size:15px;width:24%}
+
+/* votação */
+.votacao{background:var(--oliva);color:#fff;border-radius:28px;padding:36px 28px}
+.votacao h2{color:var(--gema)}
+.votacao .lead{color:#dfe5cf}
+.form{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.form label{font-weight:600;width:100%}
+.form input{
+  font:inherit;padding:12px 14px;border-radius:12px;border:2px solid transparent;min-width:220px;flex:1 1 220px;
+  background:#fff;color:#141b33;
+}
+.votacao .btn{background:var(--gema);color:#1b1b1b}
+.votacao .btn.r2{background:#fff}
+.votacao .btn[aria-pressed="true"]{box-shadow:0 0 0 3px #fff inset, 0 0 0 3px var(--pimenton)}
+.placar{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:620px){.placar{grid-template-columns:1fr}}
+.placar div{background:rgba(255,255,255,.08);border-radius:16px;padding:16px 18px}
+.placar b{font-family:var(--display);font-weight:400;font-size:44px;line-height:1;color:var(--gema)}
+.placar ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.placar li{background:rgba(255,255,255,.14);border-radius:999px;padding:3px 10px;font-size:14px}
+.status{margin:16px 0 0;font-size:15px;color:#dfe5cf;min-height:1.5em}
+
+/* guia de frases */
+.frases{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.frases div{background:var(--card);border:1px solid var(--linha);border-radius:14px;padding:14px 16px}
+.frases b{display:block;font-size:17px}
+.frases span{color:var(--tinta-2);font-size:15px}
+
+footer{padding:40px 0 60px;text-align:center;color:var(--tinta-2);font-size:15px}
+footer .ole{font-family:var(--display);font-size:34px;color:var(--pimenton);display:block;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <span>Viagem das amigas pela Espanha</span>
+      <span class="selo">Edição 2027</span>
+    </div>
+    <h1>Jorbys<br>2027</h1>
+    <p class="sub">¡Hablando español!</p>
+    <div class="billete" aria-label="Viagem de 17 a 26">
+      <div><small>Ida</small><span class="d">17</span></div>
+      <span class="seta" aria-hidden="true">✈</span>
+      <div><small>Volta</small><span class="d">26</span></div>
+    </div>
+    <p class="intro">10 dias, 9 noites e duas formas de viver a Espanha. Leiam os dois roteiros, comparem e deixem o voto lá embaixo. Cada dia vem com uma frase pra gente treinar o espanhol.</p>
+  </div>
+</header>
+
+<main>
+  <section id="escolha">
+    <div class="wrap">
+      <h2>Qual Espanha a gente quer?</h2>
+      <p class="lead">Os dois começam em Madrid. A diferença é o que vem depois: estrada e vilarejos no litoral, ou cidade grande, flamenco e balada.</p>
+
+      <div class="opcoes">
+        <article class="opcao r1">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Pé na estrada pelo sul</h3>
+          <p>Trem-bala até Málaga, carro alugado e uma sequência de cidadezinhas brancas, praias escondidas e atum rojo na costa de Cádiz.</p>
+          <ul class="rota">
+            <li>Madrid</li><li>Málaga</li><li>Nerja</li><li>Frigiliana</li><li>Marbella</li><li>Gibraltar</li><li>Barbate</li><li>Caños de Meca</li><li>Cádiz</li>
+          </ul>
+          <dl class="fatos">
+            <div><dt>Bases</dt><dd>5 cidades</dd></div>
+            <div><dt>Transporte</dt><dd>AVE + carro</dd></div>
+            <div><dt>Ritmo</dt><dd>Aventura</dd></div>
+          </dl>
+          <button class="btn" data-ver="r1">Ver o dia a dia</button>
+        </article>
+
+        <article class="opcao r2">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Madrid, Sevilha e noite em Marbella</h3>
+          <p>Mais tempo em cada lugar e menos mala pra arrumar. Madrid com calma, a Sevilha do flamenco e final de viagem na balada de Marbella.</p>
+          <ul class="rota">
+            <li>Madrid</li><li>Sevilha</li><li>Marbella</li>
+          </ul>
+          <dl class="fatos">
+            <div><dt>Bases</dt><dd>3 cidades</dd></div>
+            <div><dt>Transporte</dt><dd>Trem + transfer</dd></div>
+            <div><dt>Ritmo</dt><dd>Cidade & festa</dd></div>
+          </dl>
+          <button class="btn" data-ver="r2">Ver o dia a dia</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="roteiros" style="padding-top:0">
+    <div class="wrap">
+      <h2>Dia a dia</h2>
+      <p class="lead">Troque de roteiro nas abas. Os horários de trem são aproximados, vale conferir na Renfe quando for comprar.</p>
+      <div class="tabs" role="tablist" aria-label="Escolher roteiro">
+        <button class="tab" role="tab" id="tab-r1" aria-controls="painel-r1" aria-selected="true">Roteiro 1 · Estrada pelo sul</button>
+        <button class="tab" role="tab" id="tab-r2" aria-controls="painel-r2" aria-selected="false">Roteiro 2 · Madrid, Sevilha & Marbella</button>
+      </div>
+      <div id="painel-r1" role="tabpanel" aria-labelledby="tab-r1"></div>
+      <div id="painel-r2" role="tabpanel" aria-labelledby="tab-r2" hidden></div>
+    </div>
+  </section>
+
+  <section id="comparar" style="padding-top:0">
+    <div class="wrap">
+      <h2>Lado a lado</h2>
+      <p class="lead">Pra quem quer decidir rápido.</p>
+      <div class="tabela-wrap">
+        <table>
+          <thead><tr><th></th><th>Roteiro 1</th><th>Roteiro 2</th></tr></thead>
+          <tbody>
+            <tr><th>Noites</th><td>Madrid 2 · Nerja 2 · Marbella 1 · Caños/Barbate 2 · Cádiz 2</td><td>Madrid 4 · Sevilha 3 · Marbella 2</td></tr>
+            <tr><th>Deslocamento</th><td>AVE Madrid–Málaga e carro alugado do dia 19 ao 26</td><td>AVE Madrid–Sevilha e transfer ou carro Sevilha–Marbella</td></tr>
+            <tr><th>Troca de hotel</th><td>4 vezes</td><td>2 vezes</td></tr>
+            <tr><th>Praia</th><td>Muita: Nerja, Marbella, Caños, Cádiz</td><td>Só no final, em Marbella</td></tr>
+            <tr><th>Noite</th><td>Tapas, bares locais, Cádiz animada</td><td>Madrid, Sevilha e balada forte em Marbella</td></tr>
+            <tr><th>Espanhol na prática</th><td>Nível hard: em Caños quase ninguém fala inglês</td><td>Nível tranquilo: cidades turísticas</td></tr>
+            <tr><th>Atenção</th><td>Alguém precisa dirigir e ter PID; taxa de devolução do carro em outra cidade; passaporte em Gibraltar</td><td>Reservar mesa e entrada de balada com antecedência</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="votar" style="padding-top:0">
+    <div class="wrap">
+      <div class="votacao">
+        <h2>Votação das Jorbys</h2>
+        <p class="lead">Cada uma vota uma vez e pode mudar de ideia quando quiser. O placar atualiza ao vivo pra todo mundo.</p>
+        <div class="form">
+          <label for="apelido">Seu nome</label>
+          <input id="apelido" maxlength="30" placeholder="Ex.: Tati" autocomplete="nickname">
+          <button class="btn" data-voto="r1" aria-pressed="false">Voto no Roteiro 1</button>
+          <button class="btn r2" data-voto="r2" aria-pressed="false">Voto no Roteiro 2</button>
+        </div>
+        <div class="placar">
+          <div><span>Roteiro 1 · Estrada pelo sul</span><br><b id="n-r1">0</b><ul id="l-r1"></ul></div>
+          <div><span>Roteiro 2 · Madrid, Sevilha & Marbella</span><br><b id="n-r2">0</b><ul id="l-r2"></ul></div>
+        </div>
+        <p class="status" id="status" role="status">Carregando votos…</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="frases" style="padding-top:0">
+    <div class="wrap">
+      <h2>Kit de sobrevivência</h2>
+      <p class="lead">As frases que mais vão aparecer na viagem.</p>
+      <div class="frases">
+        <div><b>¿Me pones una caña?</b><span>Me vê um chopp?</span></div>
+        <div><b>La cuenta, por favor.</b><span>A conta, por favor.</span></div>
+        <div><b>¿Tenéis mesa para cinco?</b><span>Tem mesa pra cinco?</span></div>
+        <div><b>¿Dónde está el baño?</b><span>Onde fica o banheiro?</span></div>
+        <div><b>¡Qué pasada!</b><span>Que incrível!</span></div>
+        <div><b>Vale.</b><span>Ok, combinado.</span></div>
+        <div><b>¿Qué me recomiendas?</b><span>O que você recomenda?</span></div>
+        <div><b>Estamos de viaje de amigas.</b><span>Estamos numa viagem de amigas.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span class="ole">¡Olé, Jorbys!</span>
+  Espanha, 17 a 26 · 2027
+</footer>
+
+<script>
+const roteiros = {
+  r1: [
+    {d:17, s:"Chegada", t:"Olá, Madrid", o:"Madrid", p:"Check-in, caminhada pela Puerta del Sol e Plaza Mayor. À noite, tapas em La Latina pra começar do jeito certo.", f:["¿Me pones una caña, por favor?","Me vê um chopp, por favor?"]},
+    {d:18, s:"Madrid", t:"Madrid essencial", o:"Madrid", p:"Parque del Retiro de manhã, Museo del Prado ou Palacio Real à tarde, Gran Vía no fim do dia e noite em Malasaña.", f:["¿Dónde está el metro?","Onde fica o metrô?"]},
+    {d:19, s:"Trem-bala", t:"AVE para Málaga", o:"Madrid → Málaga → Nerja", p:"Trem-bala direto de Madrid para Málaga (cerca de 2h30 a 3h). Retirada do carro, almoço no centro de Málaga e estrada até Nerja (uns 50 min).", f:["Quiero alquilar un coche.","Quero alugar um carro."], dica:"Quem for dirigir precisa da CNH e da Permissão Internacional para Dirigir (PID)."},
+    {d:20, s:"Nerja", t:"Caiaque e vila branca", o:"Nerja + Frigiliana", p:"Manhã de caiaque saindo de Nerja pelas falésias e calas da costa. No fim da tarde, subida até Frigiliana, a cidadezinha toda branca da Costa do Sol, pra ver o pôr do sol.", f:["¿Cuánto cuesta alquilar el kayak?","Quanto custa alugar o caiaque?"]},
+    {d:21, s:"Marbella", t:"O dia mais fancy", o:"Marbella", p:"Casco Antiguo com a Plaza de los Naranjos, depois Puerto Banús e um beach club pra fechar a tarde. Jantar arrumadas.", f:["¡Qué guapas estamos!","Como a gente tá linda!"]},
+    {d:22, s:"Gibraltar", t:"Um pedaço britânico", o:"Marbella → Gibraltar → Barbate", p:"Bate-volta em Gibraltar: travessia da fronteira a pé, subida no Rochedo e os famosos macacos. Depois, estrada até a região de Barbate (cerca de 1h30).", f:["¿Aceptan euros aquí?","Vocês aceitam euro aqui?"], dica:"Levem passaporte. A moeda oficial é a libra de Gibraltar, mas euro costuma ser aceito."},
+    {d:23, s:"Barbate", t:"Atum rojo e praia escondida", o:"Barbate + Caños de Meca", p:"Almoço de atum rojo em Barbate, a capital do atum de almadraba. Tarde em Caños de Meca, vilarejo litorâneo escondido onde só se fala espanhol, e pôr do sol no Faro de Trafalgar.", f:["¿Me pones otra ración de atún?","Me traz mais uma porção de atum?"], dica:"O atum de almadraba fresco é da primavera; fora dessa época ainda aparece nos cardápios, mas vale perguntar."},
+    {d:24, s:"Cádiz", t:"A cidade mais jovem da viagem", o:"Cádiz", p:"Chegada em Cádiz, praia de La Caleta, Barrio de la Viña e a Catedral. À noite, bares cheios de gente jovem.", f:["¡Esto es una pasada!","Isso aqui é incrível!"]},
+    {d:25, s:"Cádiz", t:"Mais um dia de Cádiz", o:"Cádiz", p:"Mercado Central de manhã, praia da Victoria à tarde e última noite de tapas pelo centro histórico.", f:["¿Vamos de tapas?","Bora comer umas tapas?"]},
+    {d:26, s:"Volta", t:"Hasta luego, España", o:"Cádiz → Madrid", p:"Devolução do carro e trem Cádiz–Madrid (cerca de 4h30) para o voo, ou voo saindo de Sevilha ou Jerez, se for mais prático.", f:["¡Hasta la próxima, España!","Até a próxima, Espanha!"], dica:"Devolver o carro em cidade diferente da retirada costuma ter taxa. Comparem na hora de reservar."}
+  ],
+  r2: [
+    {d:17, s:"Chegada", t:"Olá, Madrid", o:"Madrid", p:"Check-in, Puerta del Sol, Plaza Mayor e primeira rodada de tapas em La Latina.", f:["¿Me pones una caña, por favor?","Me vê um chopp, por favor?"]},
+    {d:18, s:"Madrid", t:"Madrid clássica", o:"Madrid", p:"Museo del Prado, Parque del Retiro e passeio de barquinho no lago. Fim de tarde na Gran Vía e rooftop pra ver a cidade.", f:["¿Dónde está el metro?","Onde fica o metrô?"]},
+    {d:19, s:"Madrid", t:"Palácio e mercados", o:"Madrid", p:"Palacio Real, Templo de Debod no pôr do sol e jantar no Mercado de San Miguel. Opção: bate-volta de 30 min de trem até Toledo.", f:["¿Qué me recomiendas?","O que você recomenda?"]},
+    {d:20, s:"Madrid", t:"Bairros e noite madrilenha", o:"Madrid", p:"Malasaña e Chueca de dia, com brechós e cafés. À noite, a vida noturna de Madrid, que começa tarde e vai longe.", f:["¿A qué hora abre la discoteca?","Que horas abre a balada?"]},
+    {d:21, s:"Sevilha", t:"AVE para Sevilha", o:"Madrid → Sevilha", p:"Trem-bala Madrid–Sevilha (cerca de 2h30). Tarde em Triana, do outro lado do rio, e pôr do sol na margem do Guadalquivir.", f:["Dos billetes para Sevilla, por favor.","Duas passagens para Sevilha, por favor."]},
+    {d:22, s:"Sevilha", t:"Alcázar e flamenco", o:"Sevilha", p:"Real Alcázar, Catedral e subida na Giralda, almoço no Barrio Santa Cruz e noite de flamenco num tablao.", f:["¡Olé!","Olé! (sim, pode gritar)"], dica:"Ingressos do Alcázar esgotam; comprem online com antecedência."},
+    {d:23, s:"Sevilha", t:"Plaza de España", o:"Sevilha", p:"Plaza de España e Parque María Luisa de manhã, Setas de Sevilla no fim da tarde e tapas na Alameda de Hércules.", f:["¿Tenéis mesa para cinco?","Tem mesa pra cinco?"]},
+    {d:24, s:"Marbella", t:"Rumo à Costa do Sol", o:"Sevilha → Marbella", p:"Transfer, ônibus ou carro até Marbella (cerca de 2h30 a 3h). Praia à tarde e jantar em Puerto Banús.", f:["¿Dónde está la playa?","Onde fica a praia?"]},
+    {d:25, s:"Marbella", t:"Noite de balada", o:"Marbella", p:"Beach club de dia e a noite mais esperada da viagem: balada em Marbella, que tem as casas mais badaladas da Costa do Sol.", f:["¡Esta noche lo damos todo!","Hoje a gente dá tudo!"], dica:"Casas e beach clubs variam conforme a temporada. Reservem mesa e confirmem se estão abertos nas datas."},
+    {d:26, s:"Volta", t:"Hasta luego, España", o:"Marbella → Málaga", p:"Ida até o aeroporto de Málaga (cerca de 45 min) ou trem Málaga–Madrid para o voo de volta.", f:["¡Hasta la próxima, España!","Até a próxima, Espanha!"]}
+  ]
+};
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderRoteiro(id){
+  const el=document.getElementById("painel-"+id);
+  el.innerHTML='<ol class="dias">'+roteiros[id].map(x=>`
+    <li class="dia">
+      <div class="data" aria-hidden="true"><div><b>${x.d}</b><span>${esc(x.s)}</span></div></div>
+      <div class="dia-corpo">
+        <h4><span class="sr">Dia ${x.d}: </span>${esc(x.t)}</h4>
+        <p class="onde">${esc(x.o)}</p>
+        <p>${esc(x.p)}</p>
+        ${x.dica?`<p class="dica">${esc(x.dica)}</p>`:""}
+        <div class="frase"><span class="bal" aria-hidden="true">💬</span><div><strong>${esc(x.f[0])}</strong><br>${esc(x.f[1])}</div></div>
+      </div>
+    </li>`).join("")+'</ol>';
+}
+renderRoteiro("r1"); renderRoteiro("r2");
+
+const tabs=[...document.querySelectorAll(".tab")];
+function abrir(id){
+  tabs.forEach(t=>{const on=t.id==="tab-"+id;t.setAttribute("aria-selected",on);});
+  document.getElementById("painel-r1").hidden=id!=="r1";
+  document.getElementById("painel-r2").hidden=id!=="r2";
+}
+tabs.forEach(t=>t.addEventListener("click",()=>abrir(t.id.replace("tab-",""))));
+document.querySelectorAll("[data-ver]").forEach(b=>b.addEventListener("click",()=>{
+  abrir(b.dataset.ver);document.getElementById("roteiros").scrollIntoView();
+}));
+
+/* votação */
+const statusEl=document.getElementById("status");
+const input=document.getElementById("apelido");
+const botoes=[...document.querySelectorAll("[data-voto]")];
+let db=null, meuId=null, meuVoto=null;
+
+try{ const n=localStorage.getItem("jorbys-nome"); if(n) input.value=n; }catch(e){}
+
+function pintar(docs){
+  const grupos={r1:[],r2:[]};
+  docs.forEach(d=>{const v=d.data(); if(v && grupos[v.roteiro]) grupos[v.roteiro].push({id:d.id,nome:v.nome||"Amiga"});});
+  ["r1","r2"].forEach(k=>{
+    document.getElementById("n-"+k).textContent=grupos[k].length;
+    const ul=document.getElementById("l-"+k); ul.innerHTML="";
+    grupos[k].forEach(p=>{const li=document.createElement("li");li.textContent=p.nome+(p.id===meuId?" (você)":"");ul.appendChild(li);});
+  });
+  const meu=docs.find(d=>d.id===meuId);
+  meuVoto=meu&&meu.data()?meu.data().roteiro:null;
+  botoes.forEach(b=>b.setAttribute("aria-pressed",b.dataset.voto===meuVoto));
+  const total=grupos.r1.length+grupos.r2.length;
+  statusEl.textContent = meuVoto
+    ? `Seu voto está no Roteiro ${meuVoto==="r1"?"1":"2"}. Pode trocar a qualquer momento.`
+    : total ? "Escreva seu nome e escolha um roteiro." : "Ninguém votou ainda. Seja a primeira.";
+}
+
+async function votar(roteiro){
+  const nome=input.value.trim();
+  if(!nome){statusEl.textContent="Escreva seu nome antes de votar.";input.focus();return;}
+  if(!db||!meuId){statusEl.textContent="A votação funciona quando o site é aberto logado no claude.ai.";return;}
+  try{ localStorage.setItem("jorbys-nome",nome); }catch(e){}
+  statusEl.textContent="Salvando voto…";
+  try{
+    await db.doc("votos/"+meuId).set({roteiro, nome: nome.slice(0,30), em: Date.now()});
+  }catch(e){
+    statusEl.textContent = e && e.code==="permission_denied"
+      ? "Seu acesso a este link é só de leitura. Peça pra quem compartilhou liberar o voto."
+      : "O voto não foi salvo. Tente de novo em alguns segundos.";
+  }
+}
+botoes.forEach(b=>b.addEventListener("click",()=>votar(b.dataset.voto)));
+
+(async()=>{
+  const c=window.claude;
+  if(!c||!c.use){statusEl.textContent="A votação funciona quando o site é aberto logado no claude.ai.";return;}
+  const [d,u]=await Promise.all([c.use("db"),c.use("user")]);
+  if(!d){statusEl.textContent="A votação funciona quando o site é aberto logado no claude.ai.";botoes.forEach(b=>b.disabled=true);return;}
+  db=d;
+  if(u){ try{ meuId=await u.id(); }catch(e){} }
+  if(!meuId){botoes.forEach(b=>b.disabled=true);}
+  db.collection("votos").onSnapshot(s=>pintar(s.docs),()=>{statusEl.textContent="Não deu pra carregar os votos agora. Recarregue a página.";});
+})();
+</script>
+<style>.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}</style>
+</body>
+</html>
